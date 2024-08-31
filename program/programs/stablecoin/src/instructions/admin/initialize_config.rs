@@ -17,6 +17,15 @@ pub struct InitializeConfig<'info> {
         bump,
     )]
     pub config_account: Account<'info, Config>,
+    // We need to be able to create a mint account for the stablecoin.
+    // When configuring a new mint account, we'll use the mint constraints to define
+    // how it's created, who pays for it, how it's addressed, and what powers it has regarding token management
+    // The seeds and bump need to be defined when creating an account with a PDA.
+    // Since we'll be using the seeds for each PDA we create several times throughout this program, 
+    // we can define them as constants to avoid typos and make the code more readable.
+
+    // For more info: https://www.anchor-lang.com/docs/account-constraints
+    
     #[account(
         init,
         payer = authority,

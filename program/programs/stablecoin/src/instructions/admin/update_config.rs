@@ -1,6 +1,8 @@
 use crate::{Config, SEED_CONFIG_ACCOUNT};
 use anchor_lang::prelude::*;
 
+// We need to be able to update the config to adjust the min health factor to test the liquidate instruction
+
 #[derive(Accounts)]
 pub struct UpdateConfig<'info> {
     #[account(
